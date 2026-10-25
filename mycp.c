@@ -4,11 +4,13 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <errno.h>
+#include <sys/sysmacros.h>
 
 void generate_error_msg(const char *msg, const char *arg){
     int length = strlen(arg) + strlen(msg);
     char buff[length];
-    snprintf(buff, length -1, msg,arg[1]);
+    snprintf(buff, length -1, msg,arg);
     buff[length -1] ='\0';
     perror(buff);
 }
